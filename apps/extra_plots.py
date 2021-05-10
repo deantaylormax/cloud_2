@@ -18,7 +18,10 @@ df.reset_index(inplace=True)
 
 # cancer = pd.read_pickle('data/cancer.pkl')
 cancer = pd.read_feather("data/cancer.ftr", columns=None).set_index(['SubjectId'])
-cancer.drop(columns=['index'], inplace=True)
+try:
+    cancer.drop(columns=['index'], inplace=True)
+except:
+    pass
 cancer.reset_index(inplace=True)
 
 # just_states = df[['SubjectId', 'formulation', 'state_cur', 'State_use']]
