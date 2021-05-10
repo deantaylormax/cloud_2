@@ -7,7 +7,7 @@ app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheet
 
 auth = dash_auth.BasicAuth(
     app,
-    {'hello': 'world'}
+    {'hello3': 'world3'}
 )
 
 
