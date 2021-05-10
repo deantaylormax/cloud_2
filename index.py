@@ -4,18 +4,13 @@ from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 import pandas as pd
 pd.set_option('mode.chained_assignment', None)
+import dash_auth
 
 # must add this line in order for the app to be deployed successfully on Heroku
 from app import server
 
 from app import app
 from apps import extra_plots, prod_stats, ca_plt, master_use_plt, master_use_def, geo, ca_def, usage_over_time
-
-
-# app.layout = html.Div([
-#     dcc.Location(id='url', refresh=False),
-#     html.Div(id='page-content')
-# ])
 
 app.layout = html.Div([
                 dbc.Row(
