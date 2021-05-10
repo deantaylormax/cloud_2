@@ -10,7 +10,10 @@ import dash_bootstrap_components as dbc
 
 # df = pd.read_pickle('data/master_usage.pkl')
 df = pd.read_feather("data/master_usage.ftr", columns=None).set_index(['SubjectId'])
-df.drop(columns=['index'], inplace=True)
+try:
+    df.drop(columns=['index'], inplace=True)
+except:
+    pass
 df.reset_index(inplace=True)
 
 # cancer = pd.read_pickle('data/cancer.pkl')

@@ -20,7 +20,10 @@ all_formulations = df.formulation.unique()
 # main_usage = pd.read_pickle("data/master_usage.pkl")
 
 main_usage = pd.read_feather("data/master_usage.ftr", columns=None).set_index(['SubjectId'])
-main_usage.drop(columns=['index'], inplace=True)
+try:
+    df.drop(columns=['index'], inplace=True)
+except:
+    pass
 main_usage.reset_index(inplace=True)
 
 google = pd.read_csv("data/google_final.csv")

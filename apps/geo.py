@@ -12,7 +12,10 @@ import dash_bootstrap_components as dbc
 # just_states = df[['SubjectId', 'formulation', 'state_cur', 'State_use']]
 
 df = pd.read_feather("data/master_usage.ftr", columns=None).set_index(['SubjectId'])
-df.drop(columns=['index'], inplace=True)
+try:
+    df.drop(columns=['index'], inplace=True)
+except:
+    pass
 df.reset_index(inplace=True)
 
 

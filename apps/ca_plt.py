@@ -23,7 +23,10 @@ import dash_table
 # df = pd.read_pickle("data/cancer.pkl")
 
 df = pd.read_feather("data/cancer.ftr", columns=None).set_index(['SubjectId'])
-df.drop(columns=['index'], inplace=True)
+try:
+    df.drop(columns=['index'], inplace=True)
+except:
+    pass
 df.reset_index(inplace=True)
 
 
