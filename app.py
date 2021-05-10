@@ -11,7 +11,8 @@ auth = dash_auth.BasicAuth(
     'Maria':'tuesday',
     'Megan':'wednesday',
     'Kai':'thursday',
-    'Leah':'friday'}
+    'Leah':'friday',
+    'Doug':'saturday'}
 )
 
 

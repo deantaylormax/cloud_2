@@ -330,7 +330,7 @@ def set_checklist_options(selected_retailer, status):
     Output("6-dosage-check", 'options'),
     Output("6-dosage-check", 'value'),
     Input("7-form-check", 'value'))
-def set_checklist_options(formulation):
+def set_dosage_options(formulation):
     dosage_df = df[df['formulation'].isin(formulation)]
     # dosage_df = df[df['formulation'].apply(lambda x: set(x).intersection(formulation)).astype(bool)]
     dosage_lst = list(set(dosage_df['dosage']))
@@ -397,6 +397,7 @@ def set_year_options(selected_retailer):
 def set_age_options(selected_retailer):
     if selected_retailer == 'All':
         retailer_choice = df
+        # print(f'retailer total df {retailer_choice.head()}')
     else:
         retailer_choice = df[df['retailers'].str.contains(selected_retailer)]
     initial_age_lst = sorted(list(set(retailer_choice['age'])))
@@ -445,14 +446,17 @@ def set_age_options(selected_retailer):
 def update_graph(selected_retailer, status, use_years, duration, age, formulation, dosage, delivery):
     if selected_retailer == 'All' and status == 'All':
         main_df = df
+        # print(f'main_df total {main_df.head()}')
     elif selected_retailer == 'All' and status != 'All':
         main_df = df[(df['deceased'] == status)]
+        # print(f'main_df status {main_df.head()}')
     elif selected_retailer != 'All' and status == 'All':
         main_df = df[df['retailers'].str.contains(selected_retailer)]
+        # print(f'main_df status and retailer {main_df.head()}')
     else: 
         main_df = df[(df['retailers'].str.contains(selected_retailer)) &
                     (df['deceased'] == status)]  
-    
+        # print(f'main_df status and retailer {main_df.head()}')
     # print(f'main df{main_df}')
 
     # print(f'formulation is {formulation}')
@@ -462,6 +466,7 @@ def update_graph(selected_retailer, status, use_years, duration, age, formulatio
     #setting the results with the use_years value
     use_years_range = list(range(use_years[0], use_years[1] +1)) #create list of all values in the range to use to constrict the data
     main_df = main_df[main_df.use_years_lst.apply(lambda x: set(x).intersection(use_years_range)).astype(bool)]
+    # print(f'main_df with use years {main_df.head()}')
     #duration used
     final_df = main_df[ (main_df['total_use_years'].between(duration[0], duration[1])) &
                         (main_df['age'].between(age[0], age[1])) & 
@@ -469,21 +474,13 @@ def update_graph(selected_retailer, status, use_years, duration, age, formulatio
                         (main_df['dosage'].isin(dosage)) & 
                         (main_df['admin_method'].isin(delivery))
                         ]    
-    
-    # final_data_line = final_df.groupby(['formulation','use_years'])['SubjectId'].count().reset_index()
-    # final_data_line = final_data_line.rename(columns={'use_years':'Year', 'SubjectId':'Total'})
-    # final_data_line = final_data_line[final_data_line.Total >0]
-    # print(f'final_data head {final_data.head()}')
-    # print(form_choice)
-    # line_fig = px.scatter(final_data_line, 
-    #     x="Year", y="Total", color='formulation').update_traces(mode='lines+markers')
-    # line_fig.update_layout(
-    #     title={
-    #         'text': "<br><br><b>Total Products</b> in Use by Year",
-    #         'y':1.0,
-    #         'x':0.5,
-    #         'xanchor': 'center',
-    #         'yanchor': 'top'})
+    # print(f'total use years = {use_years}')
+    # print(f'age = {age}')
+    # print(f'formulation = {formulation}')
+    # print(f'dosage = {dosage}')
+    print(f'admin method = {delivery}')
+    print(f'final_df before groupby {final_df.head()}')
+
 
     final_df.drop_duplicates(subset=['SubjectId', 'formulation'], inplace=True) #to avoid double counting of subject IDs
     final_data = final_df.groupby('formulation')['SubjectId'].count().reset_index()
