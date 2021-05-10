@@ -11,9 +11,9 @@ import dash_bootstrap_components as dbc
 
 # df = pd.read_pickle("data/use_over_time.pkl")
 
-df = pd.read_feather("data/use_over_time.ftr", columns=None).set_index(['SubjectId'])
-df.drop(columns=['index'], inplace=True)
-df.reset_index(inplace=True)
+df = pd.read_feather("data/use_over_time.ftr", columns=None)
+# df.drop(columns=['index'], inplace=True)
+# df.reset_index(inplace=True)
 
 
 all_formulations = df.formulation.unique()
