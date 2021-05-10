@@ -29,8 +29,6 @@ except:
     pass
 df.reset_index(inplace=True)
 
-
-
 df.sort_values(by=['Firm'], ascending=True, inplace=True)
 firm_list = sorted(list(set(df['Firm'].to_list())))
 # firm_list.remove("")
