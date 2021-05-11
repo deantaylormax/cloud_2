@@ -342,7 +342,7 @@ def set_dosage_options(formulation):
     Input("6-dosage-check", "value"))
 def set_formulation_options(formulation, dosage):
     admin_df = df[(df['formulation'].isin(formulation)) & (df['dosage'].isin(dosage))]
-    print(f'admin df {admin_df}')
+    # print(f'admin df {admin_df}')
     deliv_meth = list(set(admin_df['admin_method']))
     deliv_meth_fin = sorted(deliv_meth, reverse=True)
     value = deliv_meth_fin  #makes the default value the first option in the status_lst
@@ -454,8 +454,8 @@ def update_graph(selected_retailer, status, use_years, duration, age, formulatio
                         (main_df['admin_method'].isin(delivery))
                         ]    
 
-    print(f'admin method = {delivery}')
-    print(f'final_df before groupby {final_df.head()}')
+    # print(f'admin method = {delivery}')
+    # print(f'final_df before groupby {final_df.head()}')
 
 
     final_df.drop_duplicates(subset=['SubjectId', 'formulation'], inplace=True) #to avoid double counting of subject IDs
