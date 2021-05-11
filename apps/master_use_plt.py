@@ -321,12 +321,10 @@ def set_form_list_options(selected_firm, status):
     Input("9-form-check", "value"))
 def set_checklist_options(formulation):
     dosage_df = df[df['formulation'].isin(formulation)]
-    # dosage_df = df[df['formulation'].apply(lambda x: set(x).intersection(formulation)).astype(bool)]
     dosage_lst = list(set(dosage_df['dosage']))
     final_lst =  [i for i in dosage_lst if i in dosages]    
     value = final_lst #makes the default value the first option in the status_lst)
     return [{'label': i, 'value': i} for i in final_lst], value
-
 # # """for the delivery checklist """
 @app.callback(
     Output("9-delivery-method", 'options'),
@@ -424,13 +422,6 @@ def update_graph(selected_firm, status, use_years, duration, age, formulation, d
         main_df = df[(df['Firm'] == selected_firm) &
                     (df['deceased'] == status)]  
     
-    # print(f'use years {use_years}')
-    # print(f'duration {duration}')
-    # print(f'age {age}')
-    # print(f'formulation {formulation}')
-    # print(f'dosage {dosage}')
-
-
     #setting the results with the use_years value
     use_years_range = list(range(use_years[0], use_years[1] +1)) #create list of all values in the range to use to constrict the data
     main_df = main_df[main_df.use_years_lst.apply(lambda x: set(x).intersection(use_years_range)).astype(bool)]
@@ -483,7 +474,6 @@ def update_graph(selected_firm, status, use_years, duration, age, formulation, d
 
     master_product_fig.update_layout(showlegend=False)
    
-
     return master_product_fig, master_status_text, master_avg_age_retailer_text, master_avg_dur_text, master_years_use_header, master_dur_use_header, master_age_header
 
 if __name__ == '__main__':
