@@ -35,7 +35,7 @@ initial_list = list(set(df['Firm']))
 # initial_list.remove("")
 firm_list = start_lst + initial_list
 firm_options = [{'label':i, 'value':i} for i in firm_list]
-retailer_lst = ['Albertsons', 'Amazon','Costco','CVS','H_E_Butt','Cigna_Express_Scripts','Duane_Reed', 'Giant_Eagle', 'H_E_Butt', 'Humana_Pharmacy_Solutions','Hy-Vee', 'Kroger', 'Medicine_Shoppe', 'Publix','Rite_Aid', 'Shoprite_Supermarkets','Smith\'s_Food_and_Drug', 'Target', 'Walgreens','Walmart', 'Winn_Dixie']
+retailer_lst = ['AppleBees', 'theRestaurant','theCoffeeShop','theMechanic','HealthyVegan','SignalProcessing','Clover', 'MarigoldsInc', 'WorldProducts', 'Meryls','GreatBurger', 'Canelos', 'Jones_park', 'SuperStore','HealthyPharmacy', 'Mineal','theMainFoodandDrug', 'Tomotion', 'Fallint','MegaSuperStore', 'Hillmans']
 retailer_options = [{'label':i.replace("_", ' '), 'value':i} for i in retailer_lst]
 
 # app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SUPERHERO])

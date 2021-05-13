@@ -28,7 +28,7 @@ except:
 df.reset_index(inplace=True)
 
 dosages = ['1_mg/ml', '25_mg', '15_mg/ml', '50_mg/100ml', '75_mg', '150_mg', '300_mg', 'Other']
-retailer_lst = ['All','Albertsons', 'Amazon','Costco','CVS','H_E_Butt','Cigna_Express_Scripts','Duane_Reed', 'Giant_Eagle', 'H_E_Butt', 'Humana_Pharmacy_Solutions','Hy-Vee', 'Kroger', 'Medicine_Shoppe', 'Publix','Rite_Aid', 'Shoprite_Supermarkets','Smith\'s_Food_and_Drug', 'Target', 'Walgreens','Walmart', 'Winn_Dixie']
+retailer_lst = ['All','AppleBees', 'theRestaurant','theCoffeeShop','theMechanic','HealthyVegan','SignalProcessing','Clover', 'MarigoldsInc', 'WorldProducts', 'Meryls','GreatBurger', 'Canelos', 'Jones_park', 'SuperStore','HealthyPharmacy', 'Mineal','theMainFoodandDrug', 'Tomotion', 'Fallint','MegaSuperStore', 'Hillmans']
 retailer_options = [{'label':i.replace("_", ' '), 'value':i} for i in retailer_lst]
 age_min = 0
 age_max = 110

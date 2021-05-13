@@ -36,7 +36,7 @@ firm_list = sorted(list(set(df['Firm'].to_list())))
 # firm_list = start_lst + initial_list
 firm_options = [{'label':i, 'value':i} for i in firm_list]
 # print(firm_options)
-retailer_lst = ['Albertsons', 'Amazon','Costco','CVS','H_E_Butt','Cigna_Express_Scripts','Duane_Reed', 'Giant_Eagle', 'H_E_Butt', 'Humana_Pharmacy_Solutions','Hy-Vee', 'Kroger', 'Medicine_Shoppe', 'Publix','Rite_Aid', 'Shoprite_Supermarkets','Smith\'s_Food_and_Drug', 'Target', 'Walgreens','Walmart', 'Winn_Dixie']
+retailer_lst = ['AppleBees', 'theRestaurant','theCoffeeShop','theMechanic','HealthyVegan','SignalProcessing','Clover', 'MarigoldsInc', 'WorldProducts', 'Meryls','GreatBurger', 'Canelos', 'Jones_park', 'SuperStore','HealthyPharmacy', 'Mineal','theMainFoodandDrug', 'Tomotion', 'Fallint','MegaSuperStore', 'Hillmans']
 
 from app import app
 
