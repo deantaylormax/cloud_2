@@ -10,8 +10,7 @@ auth = dash_auth.BasicAuth(
     'Maria':'tuesday',
     'Megan':'wednesday',
     'Kai':'thursday',
-    'Leah':'friday',
-    'Doug':'saturday'}
+    'Leah':'friday'}
 )
 
 server = app.server
