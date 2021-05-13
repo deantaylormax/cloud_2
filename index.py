@@ -81,9 +81,43 @@ app.layout = html.Div([
                             })
 
 
+
+
+
+
+
+
+
+
 @app.callback(Output('page-content', 'children'),
               Input('url', 'pathname'))
-def display_page(pathname):
+def display_page(pathname, session):
+    if 'udata' in session:
+        #check all the various paths and send person to those paths in the webapp
+        if pathname == '/apps/prod_stats':
+            return prod_stats.layout
+        elif pathname == '/apps/ca_plt':
+            return ca_plt.layout
+        elif pathname == '/apps/master_use_plt':
+            return master_use_plt.layout
+        elif pathname == '/apps/master_use_def':
+            return master_use_def.layout
+        elif pathname == '/apps/geo':
+            return geo.layout
+        elif pathname == '/apps/ca_def':
+            return ca_def.layout
+        elif pathname == '/apps/usage_over_time':
+            return usage_over_time.layout
+        elif pathname == '/apps/extra_plots':
+            return extra_plots.layout
+        else:
+            return prod_stats.layout
+    else:
+        #redirect to google
+    
+    
+    
+    
     if pathname == '/apps/prod_stats':
         return prod_stats.layout
     elif pathname == '/apps/ca_plt':
